@@ -38,14 +38,14 @@ Alternatively, your editor might support flutter packages get. Check the docs fo
 Now in your Dart code, you can use:
 
 ```
-import 'package:log/log_util.dart';
+import 'package:lite_log/log_util.dart';
   
 ```
 
 ## How to use 
 
 ```
-import 'package:log/log_util.dart';
+import 'package:lite_log/log_util.dart';
 
 void main() {
   runApp(HomePage());
