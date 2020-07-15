@@ -6,6 +6,6 @@
 
 * update package name
 
-## [0.0.2] - July 15，2020
+## [0.0.3] - July 15，2020
 
 * add example project
