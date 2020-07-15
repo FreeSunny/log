@@ -15,7 +15,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  log: ^0.0.x
+  log: ^0.0.3
   
 ```
 
