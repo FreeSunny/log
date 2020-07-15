@@ -1,7 +1,6 @@
-name: log
+name: lite_log
 description: flutter log util
 version: 0.0.1
-author: sunyoujun
 homepage: https://github.com/FreeSunny/log
 
 environment:

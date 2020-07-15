@@ -2,7 +2,7 @@ library log;
 
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
-import 'package:log/time_util.dart';
+import 'package:lite_log/time_util.dart';
 import 'package:path_provider/path_provider.dart';
 
 enum Level { DEBUG, INFO, WARNING, ERROR }

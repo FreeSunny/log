@@ -1,3 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:lite_log/log_util.dart';
 
-void main() {}
+void main() {
+  LogUtil.i(content: "test log");
+}

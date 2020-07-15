@@ -1,6 +1,6 @@
-# log
+# lite_log
 
-flutter log util wirte to file
+flutter lite log util wirte to file
 
 ## Features
 
