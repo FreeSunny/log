@@ -1,6 +1,6 @@
 # lite_log
 
-flutter lite log util wirte to file
+a lite log uitl with flutter, provide runtime log write to file,  when debug mode print console window, user can adjust log level control log print
 
 ## Features
 
