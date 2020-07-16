@@ -3,18 +3,21 @@
 
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:lite_log/src/time_util.dart';
 import 'package:path_provider/path_provider.dart';
 
+/// log level, control print
 enum Level { verbose, debug, info, warning, error }
 
+/// top method if debug mode return true, else return false
 bool get isInDebugMode {
   bool inDebugMode = false;
   assert(inDebugMode = true);
   return inDebugMode;
 }
 
+/// log util class
 class LogUtil {
   static Level logLevel = Level.debug;
 
@@ -24,22 +27,27 @@ class LogUtil {
 
   static final LogsStorage _storage = LogsStorage.instance;
 
+  /// print verbose level log
   static v({String tag, @required dynamic content}) {
     _log2File(Level.verbose, tag ?? "Verbose", content);
   }
 
+  /// print debug level log
   static d({String tag, @required dynamic content}) {
     _log2File(Level.debug, tag ?? "Debug", content);
   }
 
+  /// print info level log
   static i({String tag, @required dynamic content}) {
     _log2File(Level.info, tag ?? "Info", content);
   }
 
+  /// print warning level log
   static w({String tag, @required dynamic content}) {
     _log2File(Level.warning, tag ?? "Warning", content);
   }
 
+  /// print error level log
   static e({String tag, @required dynamic content}) {
     _log2File(Level.error, tag ?? "Error", content);
   }
@@ -55,6 +63,7 @@ class LogUtil {
   }
 }
 
+/// simple format class
 class _SimplePrinter {
   static final levelPrefixes = {
     Level.verbose: 'V/',
@@ -64,12 +73,14 @@ class _SimplePrinter {
     Level.error: 'E/',
   };
 
+  /// format print log: time level tag message
   static String format(Level level, String tag, dynamic content) {
     var message = _formatMessage(content);
     var timeStr = '${DateTime.now().toIso8601String()}';
     return '$timeStr ${levelPrefixes[level]} $tag $message\n';
   }
 
+  /// if message is map: flat content
   static String _formatMessage(dynamic message) {
     if (message is Map) {
       var encoder = JsonEncoder.withIndent(null);
@@ -80,18 +91,21 @@ class _SimplePrinter {
   }
 }
 
+/// log storage class
 class LogsStorage {
+  /// Singleton constructor
   static final LogsStorage _singleton = LogsStorage._();
 
-  // Singleton accessor
+  /// Singleton accessor
   static LogsStorage get instance => _singleton;
 
-  // A private constructor. Allows us to create instances of LogsStorage
-  // only from within the LogsStorage class itself.
+  /// A private constructor. Allows us to create instances of LogsStorage
+  /// only from within the LogsStorage class itself.
   LogsStorage._() {
     deleteExpireLog();
   }
 
+  /// get log print path
   Future<String> get _localPath async {
     var directory;
 
@@ -104,8 +118,10 @@ class LogsStorage {
     return directory.path;
   }
 
+  /// file
   File _file;
 
+  /// get log print file
   Future<File> get _localFile async {
     final path = await _localPath + "/flogs/";
 
@@ -130,6 +146,7 @@ class LogsStorage {
     return file;
   }
 
+  /// write log to file
   void writeLogsToFile(String log) async {
     if (_file == null) {
       await _localFile;
@@ -138,6 +155,7 @@ class LogsStorage {
     _file.writeAsStringSync('$log', mode: FileMode.writeOnlyAppend);
   }
 
+  /// app save five days log , if log expire time delete
   Future deleteExpireLog() async {
     try {
       final path = await _localPath + "/flogs/";
