@@ -15,7 +15,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  log: ^0.0.3
+  lite_log: ^0.1.0
   
 ```
 
@@ -38,14 +38,14 @@ Alternatively, your editor might support flutter packages get. Check the docs fo
 Now in your Dart code, you can use:
 
 ```
-import 'package:lite_log/log_util.dart';
+import 'package:lite_log/lite_log.dart';
   
 ```
 
 ## How to use 
 
 ```
-import 'package:lite_log/log_util.dart';
+import 'package:lite_log/lite_log.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -58,6 +58,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int count = 0;
+
   @override
   void initState() {
     super.initState();
@@ -72,10 +74,20 @@ class _MyAppState extends State<MyApp> {
           title: const Text('log example app'),
         ),
         body: Center(
-          child: Text('Running on: sample\n'),
+          child: GestureDetector(
+            child: Text('click print log ${count++}'),
+            onTap: () {
+              LogUtil.i(content: "print log $count");
+              setState(() {
+
+              });
+            },
+          ),
+          //child: Text('Running on: sample\n'),
         ),
       ),
     );
   }
 }
+
 ```
