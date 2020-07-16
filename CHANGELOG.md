@@ -13,3 +13,7 @@
 ## [0.1.0] - Jul 16，2020
 
 * code refactor, adjust print format
+
+## [0.1.1] - Jul 16，2020
+
+* adjust print format

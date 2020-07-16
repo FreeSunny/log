@@ -65,9 +65,9 @@ class _SimplePrinter {
   };
 
   static String format(Level level, String tag, dynamic content) {
-    var messageStr = _formatMessage(content);
+    var message = _formatMessage(content);
     var timeStr = '${DateTime.now().toIso8601String()}';
-    return '$timeStr ${levelPrefixes[level]} $tag $messageStr';
+    return '$timeStr ${levelPrefixes[level]} $tag $message\n';
   }
 
   static String _formatMessage(dynamic message) {
