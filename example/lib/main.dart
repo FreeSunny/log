@@ -1,4 +1,7 @@
-import 'package:lite_log/log_util.dart';
+// Copyright (c) 2014-2020 sunyoujun.
+// All right reserved.
+
+import 'package:lite_log/lite_log.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +14,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int count = 0;
+
   @override
   void initState() {
     super.initState();
@@ -25,7 +30,16 @@ class _MyAppState extends State<MyApp> {
           title: const Text('log example app'),
         ),
         body: Center(
-          child: Text('Running on: sample\n'),
+          child: GestureDetector(
+            child: Text('click print log ${count++}'),
+            onTap: () {
+              LogUtil.i(content: "print log $count");
+              setState(() {
+
+              });
+            },
+          ),
+          //child: Text('Running on: sample\n'),
         ),
       ),
     );

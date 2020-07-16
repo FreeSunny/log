@@ -1,10 +1,15 @@
+// Copyright (c) 2014-2020 sunyoujun.
+// All right reserved.
+
 import 'package:intl/intl.dart';
 
+/// time format
 class TimeFormat {
   static const dateFormatYMD = "yyyyMMdd";
   static const dateFormatFull = "yyyy-MM-dd kk:mm:ss";
 }
 
+/// time util
 class TimeUtil {
   /// get date format with year mouth day
   static String getDateFormatYMD() {
