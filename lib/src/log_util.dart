@@ -4,6 +4,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:lite_log/lite_log.dart';
 import 'package:lite_log/src/time_util.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -20,9 +21,11 @@ bool get isInDebugMode {
 /// log util class
 class LogUtil {
   static Level logLevel = Level.debug;
+  static int expireTime = 5;
 
-  static void setupLogLevel(Level level) {
+  static void setupLogLevel({Level level = Level.debug, int expireLogTime = 5}) {
     logLevel = level;
+    expireTime = expireLogTime;
   }
 
   static final LogsStorage _storage = LogsStorage.instance;
@@ -159,9 +162,12 @@ class LogsStorage {
   Future deleteExpireLog() async {
     try {
       final path = await _localPath + "/flogs/";
-      var fiveDayBefore = DateTime.now().subtract(Duration(days: 5));
+      var fiveDayBefore = DateTime.now().subtract(Duration(days: LogUtil.expireTime));
       Directory(path).list().where((value) {
         var file = File(value.path);
+        if (file == null || !file.existsSync()) {
+          return false;
+        }
         DateTime dateTime = file.lastModifiedSync();
         print(
             "delete log ${file.path} time=${dateTime.millisecondsSinceEpoch} before=${dateTime.isBefore(fiveDayBefore)}");

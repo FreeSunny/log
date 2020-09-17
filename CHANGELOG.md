@@ -25,3 +25,7 @@
 ## [0.1.3] - Jul 16，2020
 
 * format code
+
+## [0.1.4] - Sep 17，2020
+
+* config exipre time log

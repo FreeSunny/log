@@ -1,7 +1,7 @@
 name: lite_log
 description: a lite log uitl with flutter, provide runtime log write to file,  when debug mode
   print console window, user can adjust log level control log print
-version: 0.1.3
+version: 0.1.4
 homepage: https://github.com/FreeSunny/log
 
 environment:

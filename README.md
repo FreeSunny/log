@@ -9,7 +9,7 @@ a lite log uitl with flutter, provide runtime log write to file,  when debug mod
 
 ## Use this package as a library 
 
-1. Depend on it
+1. Depend on it [lite_log](https://pub.dev/packages/lite_log)
 
 Add this to your package's pubspec.yaml file:
 
